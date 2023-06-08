@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Mi Armario</string>
+    <string name="default_web_client_id" translatable="false">732930438187-u2qsoc18a2buhduf3ia3hqnahc2i0rid.apps.googleusercontent.com</string>
+
 </resources>
