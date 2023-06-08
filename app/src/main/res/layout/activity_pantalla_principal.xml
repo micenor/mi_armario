@@ -4,13 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/orange"
     tools:context=".PantallaPrincipal">
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="56dp"
-        android:layout_height="15dp"
-        android:text="hola"
+        android:layout_width="177dp"
+        android:layout_height="147dp"
+        android:text="Hola puto"
+        android:textColor="@color/black"
+        android:textSize="36sp"
+        android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
