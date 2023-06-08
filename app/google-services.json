@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "732930438187",
+    "project_id": "mi-armario-c47d4",
+    "storage_bucket": "mi-armario-c47d4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732930438187:android:d8047b5b92f3e03bf3266e",
+        "android_client_info": {
+          "package_name": "com.angel.mi_armario"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "732930438187-qgms9p4rjuk02mtsnj8gvmk14mbmcteh.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.angel.mi_armario",
+            "certificate_hash": "89cbe636dbe8a8d53290c769ffefab65ceb72196"
+          }
+        },
+        {
+          "client_id": "732930438187-capeep64fg5utdnm9tr7c3k7javcdvug.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCsj_EncQ3YCv_PH3UfhVoqFb64K7anmjA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "732930438187-capeep64fg5utdnm9tr7c3k7javcdvug.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
