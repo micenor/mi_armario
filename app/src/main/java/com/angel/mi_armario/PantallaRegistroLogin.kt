@@ -1,9 +1,11 @@
 package com.angel.mi_armario
 
+import android.annotation.SuppressLint
 import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,10 +25,11 @@ import com.google.firebase.ktx.Firebase
 class PantallaRegistroLogin : AppCompatActivity() {
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var  authStateListener: FirebaseAuth.AuthStateListener
+    private lateinit var authStateListener: FirebaseAuth.AuthStateListener
 
-    private lateinit var googleSignInClient : GoogleSignInClient
+    private lateinit var googleSignInClient: GoogleSignInClient
 
+    @SuppressLint("SuspiciousIndentation")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_registro_login)
@@ -45,16 +48,18 @@ class PantallaRegistroLogin : AppCompatActivity() {
             signInGoogle()
         }
 
-    //LOGIN CON CORREO Y CONTRASEÑA
+        //LOGIN CON CORREO Y CONTRASEÑA
         val btnLogin: Button = findViewById(R.id.btnLogin)
-        val tvEmail : TextView = findViewById(R.id.tvEmail)
-        val tvPassw : TextView = findViewById(R.id.tvPassword)
+        val tvEmail: TextView = findViewById(R.id.tvEmail)
+        val tvPassw: TextView = findViewById(R.id.tvPassword)
 
+        btnLogin.setOnClickListener {
+            val email = tvEmail.text.toString()
+            val password = tvPassw.text.toString()
 
-            btnLogin.setOnClickListener() {
-                signIn(tvEmail.text.toString(), tvPassw.text.toString())
-            }
-
+            // Llama a la función de inicio de sesión con correo y contraseña
+            iniciarSesionConCorreoYContraseña(email, password)
+        }
     }
 
     private fun signInGoogle() {
@@ -62,17 +67,17 @@ class PantallaRegistroLogin : AppCompatActivity() {
         launcher.launch(signInIntent)
     }
 
-    private val launcher = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) {
-        result ->
-                if (result.resultCode == Activity.RESULT_OK) {
-                    val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
-                    handleResults(task)
-                }
-    }
+    private val launcher =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result ->
+            if (result.resultCode == Activity.RESULT_OK) {
+                val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
+                handleResults(task)
+            }
+        }
 
     private fun handleResults(task: Task<GoogleSignInAccount>) {
         if (task.isSuccessful) {
-            val account : GoogleSignInAccount? = task.result
+            val account: GoogleSignInAccount? = task.result
             if (account != null) {
                 updateUI(account)
             }
@@ -84,8 +89,8 @@ class PantallaRegistroLogin : AppCompatActivity() {
     private fun updateUI(account: GoogleSignInAccount) {
         val credential = GoogleAuthProvider.getCredential(account.idToken, null)
         firebaseAuth.signInWithCredential(credential).addOnCompleteListener {
-            if (it.isSuccessful){
-                val intent : Intent = Intent(this, PantallaPrincipal::class.java)
+            if (it.isSuccessful) {
+                val intent: Intent = Intent(this, PantallaPrincipal::class.java)
                 intent.putExtra("email", account.email)
                 intent.putExtra("name", account.displayName)
                 startActivity(intent)
@@ -95,17 +100,28 @@ class PantallaRegistroLogin : AppCompatActivity() {
         }
     }
 
-    private fun signIn(email: String, password: String) {
+    private fun iniciarSesionConCorreoYContraseña(email: String, password: String) {
+        if (email.isEmpty() || password.isEmpty()) {
+            Toast.makeText(this, "Por favor, completa todos los campos", Toast.LENGTH_SHORT).show()
+            return
+        }
+
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this) { task ->
                 if (task.isSuccessful) {
-                    val user = firebaseAuth.currentUser
-                    Toast.makeText(baseContext, user?.uid.toString(), Toast.LENGTH_SHORT).show()
-                    //intent a la pantalla principal
-
+                    val intent = Intent(this, PantallaPrincipal::class.java)
+                    intent.putExtra("email", email)
+                    startActivity(intent)
                 } else {
-                    Toast.makeText(baseContext, "Error en el registro", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(this, "Error al iniciar sesión: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
             }
     }
+
+    fun onClickRegistrarse(view: View) {
+        startActivity(Intent(this, PantallaRegistrarse::class.java))
+    }
+
+
 }
+

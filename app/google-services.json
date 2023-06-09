@@ -1,6 +1,7 @@
 {
   "project_info": {
     "project_number": "732930438187",
+    "firebase_url": "https://mi-armario-c47d4-default-rtdb.europe-west1.firebasedatabase.app",
     "project_id": "mi-armario-c47d4",
     "storage_bucket": "mi-armario-c47d4.appspot.com"
   },
@@ -22,7 +23,7 @@
           }
         },
         {
-          "client_id": "732930438187-capeep64fg5utdnm9tr7c3k7javcdvug.apps.googleusercontent.com",
+          "client_id": "732930438187-u2qsoc18a2buhduf3ia3hqnahc2i0rid.apps.googleusercontent.com",
           "client_type": 3
         }
       ],

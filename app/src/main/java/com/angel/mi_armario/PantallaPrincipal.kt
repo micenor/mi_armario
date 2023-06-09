@@ -27,4 +27,5 @@ class PantallaPrincipal : AppCompatActivity() {
             startActivity(Intent(this, PantallaRegistroLogin::class.java))
         }
     }
+
 }
