@@ -8,6 +8,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Mi_armario">
+
         <activity
             android:name=".Splash"
             android:exported="true">
@@ -19,8 +20,15 @@
         </activity>
         <activity
             android:name=".PantallaPrincipal"
-            android:exported="false">
-        </activity>
+            android:exported="false" />
+
+        <activity
+            android:name=".PantallaRegistroLogin"
+            android:exported="false" />
+
+        <activity
+            android:name=".PantallaRegistrarse"
+            android:exported="false" />
     </application>
 
 </manifest>

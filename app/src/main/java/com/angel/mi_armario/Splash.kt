@@ -13,7 +13,7 @@ class Splash : AppCompatActivity() {
 
         android.os.Handler(Looper.getMainLooper()).postDelayed({
 
-            val intent = Intent(this, PantallaPrincipal::class.java)
+            val intent = Intent(this, PantallaRegistroLogin::class.java)
             startActivity(intent)
             finish()
         }, 3500)
