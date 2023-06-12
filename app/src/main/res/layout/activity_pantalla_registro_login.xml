@@ -7,79 +7,93 @@
     android:background="@color/orange"
     tools:context=".PantallaRegistroLogin">
 
-    <EditText
-        android:id="@+id/tvEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="196dp"
-        android:ems="10"
-        android:hint="EMAIL"
-        android:inputType="textEmailAddress"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/tvPassword"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:ems="10"
-        android:hint="CONTRASEÑA"
-        android:inputType="textPassword"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
-
     <TextView
         android:id="@+id/textView3"
-        android:layout_width="256dp"
-        android:layout_height="52dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:fontFamily="cursive"
-        android:text="Registrate guarra"
+        android:text="Regístrate"
+        android:textColor="#6D402D"
         android:textSize="30sp"
         android:textStyle="italic"
-        android:typeface="normal"
         app:layout_constraintBottom_toTopOf="@+id/tvEmail"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <Button
-        android:id="@+id/btnRegistrarse"
-        android:layout_width="142dp"
-        android:layout_height="54dp"
-        android:onClick="onClickRegistrarse"
-        android:text="REGISTRARSE"
-        app:layout_constraintBottom_toBottomOf="parent"
+    <EditText
+        android:id="@+id/tvEmail"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="48dp"
+        android:background="#EFD4C9"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="textEmailAddress"
+        android:textColor="#6D402D"
+        android:textColorHint="#9A6C5D"
+        android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-        app:layout_constraintVertical_bias="0.241" />
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <EditText
+        android:id="@+id/tvPassword"
+        android:layout_width="250dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="#EFD4C9"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        android:textColor="#6D402D"
+        android:textColorHint="#9A6C5D"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvEmail" />
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="140dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="24dp"
+        android:background="#6D402D"
         android:text="LOGIN"
-        app:layout_constraintBottom_toTopOf="@+id/btnRegistrarse"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvPassword" />
+
+    <Button
+        android:id="@+id/btnRegistrarse"
+        android:layout_width="200dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="16dp"
+        android:background="#6D402D"
+        android:onClick="onClickRegistrarse"
+        android:text="REGISTRARSE"
+        android:textColor="#FFFFFF"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnLogin" />
+
+    <ImageView
+        android:id="@+id/imageViewGoogle"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:src="@drawable/logodegoogle"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvPassword"
-        app:layout_constraintVertical_bias="0.476" />
-
-    <ImageView
-        android:id="@+id/btnGoogle"
-        android:layout_width="96dp"
-        android:layout_height="93dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnRegistrarse"
-        app:srcCompat="@drawable/logodegoogle" />
+        app:layout_constraintVertical_bias="0.088" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

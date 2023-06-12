@@ -1,7 +1,6 @@
 package com.angel.mi_armario
 
 import android.content.Intent
-import com.angel.mi_armario.Usuario
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -58,7 +57,7 @@ class PantallaRegistrarse : AppCompatActivity() {
                     val userId = firebaseAuth.currentUser?.uid
 
                     // Guardar los datos en la base de datos de Firebase
-                    val usuariosRef = database.getReference("usuarios")
+                    val usuariosRef = database.getReference("users")
                     userId?.let {
                         val usuario = Usuario(nombre, apellidos, email)
                         val usuarioData = HashMap<String, Any>()

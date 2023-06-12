@@ -33,10 +33,10 @@ class PantallaRegistroLogin : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_registro_login)
-        //FIREBASE
+
         firebaseAuth = Firebase.auth
 
-        //GOOGLE
+        // GOOGLE
         val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
             .requestIdToken(getString(R.string.default_web_client_id))
             .requestEmail()
@@ -44,11 +44,12 @@ class PantallaRegistroLogin : AppCompatActivity() {
 
         googleSignInClient = GoogleSignIn.getClient(this, gso)
 
-        findViewById<ImageView>(R.id.btnGoogle).setOnClickListener {
+        findViewById<ImageView>(R.id.imageViewGoogle).setOnClickListener {
             signInGoogle()
         }
 
-        //LOGIN CON CORREO Y CONTRASEÑA
+
+        // LOGIN CON CORREO Y CONTRASEÑA
         val btnLogin: Button = findViewById(R.id.btnLogin)
         val tvEmail: TextView = findViewById(R.id.tvEmail)
         val tvPassw: TextView = findViewById(R.id.tvPassword)
@@ -60,6 +61,27 @@ class PantallaRegistroLogin : AppCompatActivity() {
             // Llama a la función de inicio de sesión con correo y contraseña
             iniciarSesionConCorreoYContraseña(email, password)
         }
+
+        authStateListener = FirebaseAuth.AuthStateListener { firebaseAuth ->
+            val user = firebaseAuth.currentUser
+            if (user != null) {
+                // El usuario ya está autenticado, redirigir a la pantalla principal
+                val intent = Intent(this, PantallaPrincipal::class.java)
+                intent.putExtra("email", user.email)
+                startActivity(intent)
+                finish() // Finalizar la actividad actual para evitar volver atrás
+            }
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        firebaseAuth.addAuthStateListener(authStateListener)
+    }
+
+    override fun onStop() {
+        super.onStop()
+        firebaseAuth.removeAuthStateListener(authStateListener)
     }
 
     private fun signInGoogle() {
@@ -92,8 +114,8 @@ class PantallaRegistroLogin : AppCompatActivity() {
             if (it.isSuccessful) {
                 val intent: Intent = Intent(this, PantallaPrincipal::class.java)
                 intent.putExtra("email", account.email)
-                intent.putExtra("name", account.displayName)
                 startActivity(intent)
+                finish() // Finalizar la actividad actual para evitar volver atrás
             } else {
                 Toast.makeText(this, it.exception.toString(), Toast.LENGTH_SHORT).show()
             }
@@ -112,6 +134,7 @@ class PantallaRegistroLogin : AppCompatActivity() {
                     val intent = Intent(this, PantallaPrincipal::class.java)
                     intent.putExtra("email", email)
                     startActivity(intent)
+                    finish() // Finalizar la actividad actual para evitar volver atrás
                 } else {
                     Toast.makeText(this, "Error al iniciar sesión: ${task.exception?.message}", Toast.LENGTH_SHORT).show()
                 }
@@ -121,7 +144,5 @@ class PantallaRegistroLogin : AppCompatActivity() {
     fun onClickRegistrarse(view: View) {
         startActivity(Intent(this, PantallaRegistrarse::class.java))
     }
-
-
 }
 
