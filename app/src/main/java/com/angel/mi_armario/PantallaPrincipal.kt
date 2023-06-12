@@ -1,31 +1,42 @@
 package com.angel.mi_armario
-
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityOptionsCompat
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
 
 class PantallaPrincipal : AppCompatActivity() {
+    private lateinit var counterTextView: TextView
+    private lateinit var incrementButton: Button
+    private lateinit var logoutButton: Button
+    private var counter = 0
 
-    private  lateinit var  firebaseAuth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_pantalla_principal)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        counterTextView = findViewById(R.id.counterTextView)
+        incrementButton = findViewById(R.id.incrementButton)
+        logoutButton = findViewById(R.id.logoutButton)
 
-        val email = intent.getStringExtra("email")
-        val displayName = intent.getStringExtra("name")
+        incrementButton.setOnClickListener {
+            incrementCounter()
+        }
 
-        findViewById<TextView>(R.id.textView4).text = email + "\n" + displayName
-
-        findViewById<Button>(R.id.btnLogout).setOnClickListener {
-            firebaseAuth.signOut()
-            startActivity(Intent(this, PantallaRegistroLogin::class.java))
+        logoutButton.setOnClickListener {
+            signOut()
         }
     }
 
+    private fun incrementCounter() {
+        counter++
+        counterTextView.text = counter.toString()
+    }
+
+    private fun signOut() {
+        FirebaseAuth.getInstance().signOut()
+            startActivity(Intent(this, PantallaRegistroLogin::class.java))
+    }
 }
