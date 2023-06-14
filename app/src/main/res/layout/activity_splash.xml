@@ -1,34 +1,35 @@
-<?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/orange"
+    android:background="@drawable/background_gradient"
     tools:context=".Splash">
 
     <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/lottie"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/lottie"
-        app:lottie_rawRes="@raw/ropasplash"
+        android:layout_centerInParent="true"
         app:lottie_autoPlay="true"
-        android:layout_centerInParent="true"/>
+        app:lottie_rawRes="@raw/ropasplash" />
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="210dp"
-        android:layout_height="57dp"
+        android:layout_width="196dp"
+        android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginStart="98dp"
+        android:layout_marginStart="105dp"
         android:layout_marginTop="83dp"
-        android:layout_marginEnd="103dp"
+        android:layout_marginEnd="109dp"
         android:layout_marginBottom="590dp"
+        android:fontFamily="@font/font"
         android:text="Mi Armario"
-        android:textColor="@color/white"
+        android:textColor="@color/black"
         android:textSize="40sp" />
+
 
 </RelativeLayout>
