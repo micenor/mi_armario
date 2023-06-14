@@ -1,21 +1,21 @@
 package com.angel.mi_armario
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.os.Looper
+import android.os.Handler
+import androidx.appcompat.app.AppCompatActivity
 
 class Splash : AppCompatActivity() {
+    private val SPLASH_DELAY: Long = 3500 // 3.5 segundos
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash)
 
-        android.os.Handler(Looper.getMainLooper()).postDelayed({
-
-            val intent = Intent(this, PantallaRegistroLogin::class.java)
+        Handler().postDelayed({
+            val intent = Intent(this@Splash, PantallaRegistroLogin::class.java)
             startActivity(intent)
             finish()
-        }, 3500)
-
+        }, SPLASH_DELAY)
     }
 }
